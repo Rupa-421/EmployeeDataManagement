@@ -1,6 +1,7 @@
 
   
   <div class="body" *ngIf="employee_data?.length>0 && loading==false && noData==false">
+    <h2>Details of employees are:</h2>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
 
         <!--- Note that these columns can be defined in any order.

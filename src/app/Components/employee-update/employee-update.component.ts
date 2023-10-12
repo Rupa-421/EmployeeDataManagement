@@ -20,7 +20,7 @@ employee:Employee;
     this.employeeService.updateEmployeeDetails(this.employee.id,formValue).subscribe((data) => {
       console.log('data...', data);
       if (!data.error) {
-        alert("employee added successfully");
+        alert("employee updated successfully");
         this.router.navigate(['/home']);
         return;
       }
