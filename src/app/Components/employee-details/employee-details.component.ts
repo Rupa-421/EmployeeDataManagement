@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Employee } from 'src/app/Models/employee';
@@ -13,20 +13,27 @@ import { MatTableDataSource } from '@angular/material/table';
 
 })
 export class EmployeeDetailsComponent implements OnInit {
-  employee_data:Employee[];
+  employee_data:any;
   updateEmployee:Employee;
   displayedColumns:string[]=['id','name','dept_name','salary','email','isactive','update','remove'];
   dataSource:any;
+  @Input() noData:boolean;
+  loading:boolean=false;
   constructor(private employeeService:EmployeeService,private cd:ChangeDetectorRef,private router:Router) { }
 
   ngOnInit(): void {
-  
-     this.employeeService.getEmployeeDetails().subscribe((data=>{
+  this.loading=true
+     this.employeeService.getEmployeeDetails().subscribe((data)=>{
+    this.loading=false;
       this.employee_data=data;
       console.log(data);
       this.dataSource = new MatTableDataSource<Employee>(this.employee_data);
 
-     }))
+     },(error)=>{
+      this.loading=false;
+      this.noData=true;
+
+     })
   }
 removeEmployeeByIndex(index:number,id:number){
   this.employeeService.removeEmployeeByIndex(id).subscribe((data) => {

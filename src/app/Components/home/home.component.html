@@ -1,9 +1,10 @@
 <div class="body">
     <div class="first-section">
-      <app-employee-details></app-employee-details>
+      <app-employee-details [noData]="noData"></app-employee-details>
     </div>
+    <div></div>
     <div class="second-section">
         <button mat-raised-button color="primary" routerLink="/add">Add an Employee</button>
-      <button mat-raised-button color="warn">Delete Employee Table</button>
+      <button mat-raised-button color="warn" (click)="deleteTable()">Delete Employee Table</button>
     </div>
   </div>

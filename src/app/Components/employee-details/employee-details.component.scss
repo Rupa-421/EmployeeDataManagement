@@ -1,9 +1,32 @@
 .body{
-    display:flex;
+    max-height: 78vh;
+    overflow: scroll;
+}
+
+h2{
+    font-weight: 700;
+    font-size: 20;
+}
+table {
+    width:100%;
+    max-height: 200px; /* Set the maximum height for the table */
+    overflow: scroll;    /* Add a scrollbar if the table exceeds the specified height */
+    border-collapse: collapse; /* Optional: to collapse table borders */
+  }
+  
+  /* Optional: Style for table cells, headers, etc. */
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  .spinner,.noData-wrapper{
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding:50px;
-}
-table{
-    width:100%;
+  }
+  .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element{
+
+    color: blue !important;
+
 }

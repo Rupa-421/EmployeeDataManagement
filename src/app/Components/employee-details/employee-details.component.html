@@ -1,7 +1,7 @@
 
   
-  <div class="body">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="employee_data?.length>0">
+  <div class="body" *ngIf="employee_data?.length>0 && loading==false && noData==false">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -51,5 +51,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-   
   </div>
+  <div class="noData-wrapper">
+    <ng-container *ngIf="noData"><h2>No Data To Display</h2></ng-container>
+  </div>
+  <div class="spinner">
+    <mat-spinner class="custom-checkbox" *ngIf="loading==true"></mat-spinner>
+  </div>
+  
