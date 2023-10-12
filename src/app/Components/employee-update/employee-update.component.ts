@@ -17,8 +17,6 @@ employee:Employee;
     this.employee=this.employeeService.getDataForUpdate();
   }
   callUpdateEmployeeDetails(formValue:any){
-    formValue['isactive']=false;
-    console.log(formValue);
     this.employeeService.updateEmployeeDetails(this.employee.id,formValue).subscribe((data) => {
       console.log('data...', data);
       if (!data.error) {

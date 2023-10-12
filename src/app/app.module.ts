@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './Services/employee.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { EmployeeFormComponent } from './Components/employee-form/employee-form.component';
 import { EmployeeUpdateComponent } from './Components/employee-update/employee-update.component';
@@ -42,6 +43,7 @@ import { EmployeeUpdateComponent } from './Components/employee-update/employee-u
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { EmployeeService } from 'src/app/Services/employee.service';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/Models/employee';
+import { Employee } from '../../Models/employee';
 
 @Component({
   selector: 'app-employee-add',
@@ -21,7 +21,6 @@ export class EmployeeAddComponent implements OnInit {
     
   }
   callAddEmployeeDetails(formValue:any){
-    formValue['isactive']=false;
     console.log(formValue);
     this.employeeService.addEmployeeDetails(formValue).subscribe((data) => {
       console.log('data...', data);
