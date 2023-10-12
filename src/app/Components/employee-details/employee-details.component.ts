@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { EmployeeService } from 'src/app/Services/employee.service';
 export interface Employee{
@@ -20,7 +21,7 @@ export class EmployeeDetailsComponent implements OnInit {
   employee_data:Employee[];
   displayedColumns:string[]=['id','name','dept_name','salary','email','isactive','update','remove'];
   dataSource:any;
-  constructor(private employeeService:EmployeeService) { }
+  constructor(private employeeService:EmployeeService,private cd:ChangeDetectorRef,private router:Router) { }
 
   ngOnInit(): void {
   
@@ -29,5 +30,14 @@ export class EmployeeDetailsComponent implements OnInit {
       this.dataSource=this.employee_data;
      }))
   }
-
+removeEmployeeByIndex(index:number){
+  this.employeeService.removeEmployeeByIndex(index).subscribe((data) => {
+    console.log('data...', data);
+    if (!data) {
+      alert("employee data deleted successfully");
+      return;
+    }
+    alert(data.error);
+  }); 
+}
 }
