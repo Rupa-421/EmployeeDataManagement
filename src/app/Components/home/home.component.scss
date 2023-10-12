@@ -1,0 +1,9 @@
+.body{
+    display:flex;
+    flex-direction: column;
+}
+.second-section{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
