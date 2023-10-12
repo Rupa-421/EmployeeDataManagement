@@ -1,15 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Employee } from 'src/app/Models/employee';
 import { EmployeeService } from 'src/app/Services/employee.service';
-export interface Employee{
-  id:number,
-  name:string,
-  dept_name:string,
-  salary:number,
-  email:string,
-  isactive:boolean
-}
+
 
 @Component({
   selector: 'app-employee-details',
@@ -19,6 +13,7 @@ export interface Employee{
 })
 export class EmployeeDetailsComponent implements OnInit {
   employee_data:Employee[];
+  updateEmployee:Employee;
   displayedColumns:string[]=['id','name','dept_name','salary','email','isactive','update','remove'];
   dataSource:any;
   constructor(private employeeService:EmployeeService,private cd:ChangeDetectorRef,private router:Router) { }
@@ -27,6 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   
      this.employeeService.getEmployeeDetails().subscribe((data=>{
       this.employee_data=data;
+      console.log(data);
       this.dataSource=this.employee_data;
      }))
   }
@@ -39,5 +35,10 @@ removeEmployeeByIndex(index:number){
     }
     alert(data.error);
   }); 
+}
+updateEmployeeByIndex(index:number){
+  this.updateEmployee=this.employee_data[index];
+  this.employeeService.setDataForUpdate(this.updateEmployee);
+  this.router.navigate(['/update']);
 }
 }

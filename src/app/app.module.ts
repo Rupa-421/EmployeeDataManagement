@@ -17,12 +17,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './Services/employee.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { EmployeeFormComponent } from './Components/employee-form/employee-form.component';
+import { EmployeeUpdateComponent } from './Components/employee-update/employee-update.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EmployeeDetailsComponent,
     EmployeeAddComponent,
+    EmployeeFormComponent,
+    EmployeeUpdateComponent,
   ],
   imports: [
     BrowserModule,

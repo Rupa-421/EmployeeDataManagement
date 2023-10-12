@@ -1,0 +1,83 @@
+<form [formGroup]="employeeFormGroup">
+    <div class="row">
+      <div class="form__field col-6">
+        <label style="margin-bottom: 0.5rem">Name<sup>*</sup></label>
+        <mat-form-field appearance="outline">
+          <input type="name" matInput placeholder="xyz" formControlName="name" required>
+        </mat-form-field>
+        <mat-error
+          *ngIf="employeeFormGroup.get('name')?.touched || employeeFormGroup.get('name')?.dirty">
+          <ng-container *ngIf="employeeFormGroup.get('name')?.hasError('required')">
+            Name is required
+          </ng-container>
+        </mat-error>
+      </div>
+
+      <div class="form__field col-6">
+        <label style="margin-bottom: 0.5rem">Email<sup>*</sup></label>
+        <mat-form-field appearance="outline">
+          <input type="email" matInput placeholder="xyz@gmail.com" formControlName="email" required>
+        </mat-form-field>
+        <mat-error
+          *ngIf="employeeFormGroup.get('email')?.touched || employeeFormGroup.get('email')?.dirty">
+          <ng-container *ngIf="employeeFormGroup.get('email')?.hasError('required')">
+            Email is required
+          </ng-container>
+          <ng-container *ngIf="employeeFormGroup.get('email')?.hasError('email')">
+            Please enter a valid email
+          </ng-container>
+        </mat-error>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="form__field col-6">
+        <label style="margin-bottom: 0.5rem">department_name<sup>*</sup></label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="CSE" formControlName="dept_name" required>
+        </mat-form-field>
+        <mat-error
+          *ngIf="employeeFormGroup.get('dept_name')?.touched || employeeFormGroup.get('dept_name')?.dirty">
+          <ng-container *ngIf="employeeFormGroup.get('dept_name')?.hasError('required')">
+            Department_name is required
+          </ng-container>
+        </mat-error>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="row">
+      <div class="form__field col-6">
+        <label style="margin-bottom: 0.5rem">Salary<sup>*</sup></label>
+        <mat-form-field appearance="outline">
+          <input type="number" matInput placeholder="1000000" formControlName="salary" required>
+        </mat-form-field>
+        <mat-error
+          *ngIf="employeeFormGroup.get('salary')?.touched || employeeFormGroup.get('salary')?.dirty">
+          <ng-container *ngIf="employeeFormGroup.get('salary')?.hasError('required')">
+            Salary is required
+          </ng-container>
+        </mat-error>
+      </div>
+
+      <div class="form__field col-4">
+        <label style="margin-bottom:0.5rem">Isactive<sup>*</sup></label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Placeholder" required formControlName="isactive">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex-end">
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        style="padding: 0 3rem"
+        [disabled]="!employeeFormGroup.valid"
+        (click)="callSubmitEmployeeDetails(employeeFormGroup.getRawValue())"
+      >{{ action === 'update' ? 'update' : 'add' }}
+    </button>
+    </div>
+  </form>

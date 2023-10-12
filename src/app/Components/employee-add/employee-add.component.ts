@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { EmployeeService } from 'src/app/Services/employee.service';
 import { Router } from '@angular/router';
+import { Employee } from 'src/app/Models/employee';
 
 @Component({
   selector: 'app-employee-add',
@@ -12,16 +13,12 @@ import { Router } from '@angular/router';
 })
 export class EmployeeAddComponent implements OnInit {
   employeeFormGroup!: FormGroup;
+  action:string="add"
+  employee:Employee={name:"",dept_name:"",salary:0,email:"",isactive:false,id:0}
   constructor(private fb:FormBuilder,private router:Router,private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
-    this.employeeFormGroup=this.fb.group({
-      name:['',[Validators.required]],
-      dept_name:['',[Validators.required]],
-      salary:['',[Validators.required]],
-      email:['',[Validators.required,Validators.email]],
-      isactive:['',[Validators.required]]
-    })
+    
   }
   callAddEmployeeDetails(formValue:any){
     formValue['isactive']=false;
